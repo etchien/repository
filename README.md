@@ -13,6 +13,6 @@ comment se fait l'installation:
  
       express --view=ejs repository
       
-  Apres cette commande, vous aurez votre struce sans les dossiers models et controlleurs dont vous seriez invité à creer manuellement. 
+  Apres cette commande, vous aurez votre structure sans les dossiers models et controlleurs dont vous seriez invité à creer manuellement. 
   
   Nous signalons que express-generator nous facilite la tache en créant le necessaire par defaut telles que les routes, le fichier app.js comme d'autre nommerons server.js
