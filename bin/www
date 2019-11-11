@@ -4,10 +4,13 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('repository:server');
-var http = require('http');
+const Serveur = require('../app.js');
+const debug = require('debug')('repository:server');
+const http = require('http');
 
+const db = require('../settings/database');
+const serveur = new Serveur();
+const app  = serveur.getApp();
 /**
  * Get port from environment and store in Express.
  */
@@ -20,10 +23,14 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+const io = require('socket.io').listen(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
+
+db();
+
+io.use(serveur.getSharedSession());
 
 server.listen(port);
 server.on('error', onError);
@@ -87,4 +94,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('i listenning on port 3000');
 }
